@@ -38,19 +38,39 @@ const schema = new GraphQLSchema({
 	query: new GraphQLObjectType({
 		name: "Query",
 		fields: {
-			people: {				 
+			// Query 1
+
+			// name of the query, people
+			people: {
+				 // the type of response this query will return, here PersonType
 				type: GraphQLList(PersonType),
-				resolve: (root, args, context, info) => { return PersonModel.find().exec(); }
-			},			
-			peopleByID: {			
+				// resolver is required
+				resolve: (root, args, context, info) => {
+					// we are returning all persons available in the table in mongodb
+					return PersonModel.find().exec();
+				}
+			},
+			// Query 2
+			peopleByID: {
+				// name of the query is people by id
 				type: PersonType,
-				args: { id: { type: GraphQLNonNull(GraphQLID) } },
-				resolve: (root, args, context, info) => { return PersonModel.findById(args.id).exec(); }
-			},			
+				args: {
+					// strong validation for graphqlid, which is mendatory for running this query
+					id: { type: GraphQLNonNull(GraphQLID) }
+				},
+				resolve: (root, args, context, info) => {
+					return PersonModel.findById(args.id).exec();
+				}
+			},
+			// Query 3
 			peopleByName: {
 				type: GraphQLList(PersonType),
-				args: { firstName: { type: GraphQLString } },
-				resolve: (root, args, context, info) => { return PersonModel.find({'firstName':args.firstName}).exec(); }
+				args: { 
+					firstName: { type: GraphQLString } 
+				},
+				resolve: (root, args, context, info) => {
+					return PersonModel.find({'firstName':args.firstName}).exec();
+				}
 			}
 		}
 	}),
@@ -61,7 +81,10 @@ const schema = new GraphQLSchema({
 		fields: {
 			people: {
 				type: PersonType,
-				args: { firstName: { type: GraphQLString }, lastName: { type: GraphQLString } },
+				args: {
+					firstName: { type: GraphQLString },
+					lastName: { type: GraphQLString }
+				},
 				resolve: (root, args, context, info) => {
 					var people = new PersonModel(args);
 					return people.save();
@@ -73,6 +96,6 @@ const schema = new GraphQLSchema({
 
 app.use("/person",	ExpressGraphQL({schema, graphiql: true}));
 
-app.listen(3083, () => {
-	console.log("server running at 3083");
+app.listen(3001, () => {
+	console.log("server running at 3001");
 });
