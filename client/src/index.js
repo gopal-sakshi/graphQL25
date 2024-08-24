@@ -7,7 +7,7 @@ import { ApolloProvider } from "react-apollo";
 import GettingGraphQLData from "./components/GettingGraphQLData";
 
 const client = new ApolloClient({
-	uri: "http://localhost:3001/person"
+	uri: "http://localhost:3083/person"
 });
 
 ReactDOM.render(

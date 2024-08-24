@@ -15,3 +15,6 @@ query { people { id firstName lastName } }                      // WORKS
 
 mutation { people (firstName: "Luka", lastName: "Modric") { id }}                       // WORKS
 mutation { people (lastName: "Higuain", firstName: "Gonzalo" ) { id firstName }}        // ALSO WORKS
+
+
+https://github.com/nikhilknoldus/fullstack-react-apollo-graphql-mongodb
