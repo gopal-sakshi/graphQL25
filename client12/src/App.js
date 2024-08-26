@@ -1,5 +1,5 @@
 import Comp1 from './component1';
-import Comp2 from './component1';
+import Comp2 from './component2';
 
 export default function() {
     return (

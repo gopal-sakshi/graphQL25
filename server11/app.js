@@ -38,6 +38,10 @@ const schema = new GraphQLSchema({
 	query: new GraphQLObjectType({
 		name: "Query",
 		fields: {
+            namaste24: {
+                type: GraphQLString,
+                resolve: () => `namaste babai ===> ${new Date().toISOString()}` 
+            },
 			people: {				 
 				type: GraphQLList(PersonType),
 				resolve: (root, args, context, info) => { return PersonModel.find().exec(); }

@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 /***********************************************************************/
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 const clientInstance11 = new ApolloClient({
-    uri: 'http://localhost:3083/person',
+    uri: 'http://localhost:3014/graphql',
     cache: new InMemoryCache(),         // apollo client uses to cache query results after fetching them
 });
 
