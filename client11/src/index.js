@@ -5,6 +5,7 @@ import * as serviceWorker from "./serviceWorker";
 import ApolloClient from "apollo-boost"; //connect with our server which is running at backend
 import { ApolloProvider } from "react-apollo";
 import GettingGraphQLData from "./components/GettingGraphQLData";
+import GettingStuff_1 from "./components/GettingStuff_1";
 
 const client = new ApolloClient({
 	uri: "http://localhost:3083/person"
@@ -13,6 +14,7 @@ const client = new ApolloClient({
 ReactDOM.render(
 	<ApolloProvider client={client}>
 		<GettingGraphQLData />
+        <GettingStuff_1 />
 	</ApolloProvider>,
 	document.getElementById("root")
 );

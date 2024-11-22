@@ -11,7 +11,7 @@ import { useState } from 'react';
 const NAMASTE_QUERY24 = gql`
     query {
         namaste24 { name stadium manager }
-        students { id firstName lastName gender subjects createdTs23 }
+        students (orderBy: {firstName: ASC }) { id firstName lastName gender subjects createdTs23 }
     }
 `
 
@@ -44,7 +44,7 @@ function StudentComp({studentObj, modifyStudent}) {
 export default function Comp1() {
     const { loading, error, data } = useQuery(NAMASTE_QUERY24);
     const style23 = { border: '1px solid red', margin: '10px', padding: '10px', width: 'fit-content' }
-    const handleSt = () => { console.log("handleSt triggered"); }
+    const handleSt = () => { console.log("graqphql mutate call cheyyaali raa"); }
     return (
         <div>
             <h2>nenu component 1 </h2>
@@ -57,7 +57,7 @@ export default function Comp1() {
                 { data?.students.map((student23) => 
                     <li key={student23.id} style={{margin:'5px'}}>
                         {/* <StudentComp studentObj={student23} modifyStudent={handleSt}/> */}
-                        need to implement === {student23.firstName}
+                        {student23.firstName}__{student23.lastName}
                     </li>
                 )}
             </div>

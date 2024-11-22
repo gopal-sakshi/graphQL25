@@ -1,5 +1,6 @@
 import Comp1 from './component1';
 import Comp2 from './component2';
+import Comp3 from './component3';
 
 export default function() {
     return (
@@ -9,6 +10,8 @@ export default function() {
             <Comp1 />
             <hr></hr>
             <Comp2 />
+            <hr></hr>
+            <Comp3 />
         </div>
     )
 }
